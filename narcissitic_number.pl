@@ -1,12 +1,10 @@
 sub NarcissisticNumber {
 	($s, $f) = @_;
     @o=();
-    for ($i = $s; $i <= $f; $i++ ) {
-        $s=0;
-        foreach $p ( @x = split('',$i) ) {
-            $s += $p**@x;
-        }
-        ($s == $i) ? push @o, int($i) : next;
+    for ($s .. $f) {
+        $y=0;
+        $y += $_**@x for (@x = split('',$_));
+        push @o, int($_) if( $y == $_ );
     }
     \@o;
 }
