@@ -1,25 +1,14 @@
 sub NarcissisticNumber {
-	my ($s, $f) = @_;
+	($s, $f) = @_;
     
     @o = ();
     for ($i = $s; $i <= $f; $i++ ) {
-        push @o, $i if( iN($i) );
+        @ps = split('',$i);
+        $s = 0;
+        foreach $p ( @ps ) {
+            $s += $p**@ps;
+        }
+        ($s == $i) ? push @o, int($i) : next;
     }
-    return \@o;
-}
-
-sub iN {
-    ($n) = @_;
-    
-    @ps = split('',$n);
-    $l = @ps;
-    $s = '';
-    foreach $p ( @ps ) {
-        $s += $p**$l;
-    }
-    if( $s == $n ) {
-        return 1;
-    }
-    
-    return 0;
+    \@o;
 }
