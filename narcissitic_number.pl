@@ -1,25 +1,23 @@
 sub NarcissisticNumber {
-	my ($start, $finish) = @_;
+	my ($s, $f) = @_;
     
-    my @output = ();
-    for (my $i = $start; $i <= $finish; $i++ ) {
-        if( isNarcisstic($i) ) {
-            push @output, $i;
-        }
+    @o = ();
+    for ($i = $s; $i <= $f; $i++ ) {
+        push @o, $i if( iN($i) );
     }
-    return \@output;
+    return \@o;
 }
 
-sub isNarcisstic {
-    my($num) = @_;
+sub iN {
+    ($n) = @_;
     
-    my @parts = split('',$num);
-    my $len = @parts;
-    my $sum = '';
-    foreach my $part ( @parts ) {
-        $sum += $part**$len;
+    @ps = split('',$n);
+    $l = @ps;
+    $s = '';
+    foreach $p ( @ps ) {
+        $s += $p**$l;
     }
-    if( $sum == $num ) {
+    if( $s == $n ) {
         return 1;
     }
     
